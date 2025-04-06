@@ -14,7 +14,7 @@ public class ExceptionHandler {
         Class<? extends ICommand> commandClass = command.getClass();
         Class<? extends Exception> exceptionClass = ex.getClass();
 
-        return store.get(commandClass).get(exceptionClass).apply(command, ex);
+        return store.get(commandClass).get(exceptionClass).handle(command, ex);
     }
 
     public static void registerHandler(Class commandType, Class exceptionType, IHandler handler) {

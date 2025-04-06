@@ -8,7 +8,7 @@ import org.example.functions.IHandler;
 public class RepeatFailedCommandHandler implements IHandler {
 
     @Override
-    public ICommand apply(ICommand command, Exception ex) {
+    public ICommand handle(ICommand command, Exception ex) {
         return new RepeatCommand(command);
     }
 

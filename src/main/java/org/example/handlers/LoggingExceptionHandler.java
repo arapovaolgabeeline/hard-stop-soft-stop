@@ -8,7 +8,7 @@ import org.example.functions.IHandler;
 public class LoggingExceptionHandler implements IHandler {
 
     @Override
-    public ICommand apply(ICommand command, Exception ex) {
+    public ICommand handle(ICommand command, Exception ex) {
         return new ExceptionLoggerCommand(ex);
     }
 

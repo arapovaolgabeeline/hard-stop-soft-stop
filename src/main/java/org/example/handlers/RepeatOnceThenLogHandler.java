@@ -11,7 +11,7 @@ import org.example.functions.IHandler;
 public class RepeatOnceThenLogHandler implements IHandler {
 
     @Override
-    public ICommand apply(ICommand command, Exception ex) {
+    public ICommand handle(ICommand command, Exception ex) {
         return new RepeatLogCommand(ex, command);
     }
 

@@ -5,6 +5,6 @@ import org.example.commands.ICommand;
 @FunctionalInterface
 public interface IHandler {
 
-    ICommand apply(ICommand command, Exception ex);
+    ICommand handle(ICommand command, Exception ex);
 
 }

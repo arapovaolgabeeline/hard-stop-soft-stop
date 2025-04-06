@@ -1,5 +1,3 @@
-package org.example;
-
 import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
 import org.example.commands.ExceptionLoggerCommand;
 import org.example.commands.ICommand;
@@ -37,7 +35,7 @@ class MainTest {
         LoggingExceptionHandler loggingExceptionHandler = new LoggingExceptionHandler();
 
         // when
-        ICommand command = loggingExceptionHandler.apply(Mockito.mock(ICommand.class), new Exception());
+        ICommand command = loggingExceptionHandler.handle(Mockito.mock(ICommand.class), new Exception());
 
         // then
         assertInstanceOf(ExceptionLoggerCommand.class, command);
@@ -63,7 +61,7 @@ class MainTest {
         RepeatFailedCommandHandler repeatFailedCommandHandler = new RepeatFailedCommandHandler();
 
         // when
-        ICommand command = repeatFailedCommandHandler.apply(failedCommand, new Exception());
+        ICommand command = repeatFailedCommandHandler.handle(failedCommand, new Exception());
 
         // then
         assertInstanceOf(RepeatCommand.class, command);
@@ -78,7 +76,7 @@ class MainTest {
         RepeatOnceThenLogHandler repeatOnceThenLogHandler = new RepeatOnceThenLogHandler();
 
         // when
-        ICommand command = repeatOnceThenLogHandler.apply(failedCommand, new Exception());
+        ICommand command = repeatOnceThenLogHandler.handle(failedCommand, new Exception());
 
         // then
         assertInstanceOf(RepeatLogCommand.class, command);
@@ -94,7 +92,7 @@ class MainTest {
         RepeatTwiceThenLogHandler repeatTwiceThenLogHandler = new RepeatTwiceThenLogHandler();
 
         // when
-        ICommand command = repeatTwiceThenLogHandler.apply(failedCommand, new Exception());
+        ICommand command = repeatTwiceThenLogHandler.handle(failedCommand, new Exception());
         command.execute();
 
         // then
